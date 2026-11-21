@@ -58,3 +58,7 @@ Each script documents its usage at the top of the file.
 ## Related
 
 - [ui-pack-create](https://github.com/greeun/ui-pack-create): makes, edits and syncs packs. This skill never edits pack files.
+
+## License
+
+Licensed under the [Apache License, Version 2.0](LICENSE).
