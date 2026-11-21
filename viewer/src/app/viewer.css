@@ -1,0 +1,242 @@
+/* The frame of the pack viewer. Tokens differ per pack, so colors come only from the text color (currentColor) and background the pack's global CSS sets. */
+.v-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 96px;
+}
+/* Line height is set on the viewer frame only. The gallery (<Gallery />) must inherit the pack's body line height
+   to get the same values as /design in a target app (set on .v-page, every gallery of a pack whose body line height
+   is not 1.6 would differ). The table of contents is selected by .v-toc, not nav (a gallery may contain nav components). */
+.v-page :where(.v-head, .v-toc, .v-section:not(.v-gallery), .v-gallery > h2, .v-gallery > .v-note) {
+  line-height: 1.6;
+}
+.v-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.v-head h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.v-kicker,
+.v-version,
+.v-note {
+  opacity: 0.72;
+}
+.v-kicker {
+  font-size: 13px;
+}
+.v-version {
+  font-size: 16px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.v-lead {
+  max-width: 68ch;
+  margin-top: 8px;
+  text-wrap: pretty;
+}
+.v-theme {
+  flex: none;
+}
+.v-toc {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  margin: 24px -24px 0;
+  padding: 12px 24px;
+  background: var(--v-bg, Canvas);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid color-mix(in oklab, currentColor 16%, transparent);
+}
+.v-toc a {
+  font-size: 14px;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, currentColor 30%, transparent);
+  text-underline-offset: 4px;
+}
+.v-toc a:hover {
+  text-decoration-color: currentColor;
+}
+.v-section {
+  margin-top: 56px;
+  scroll-margin-top: 64px;
+}
+.v-section > h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.v-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 24px 0 8px;
+}
+.v-note {
+  font-size: 14px;
+  margin-top: 8px;
+  max-width: 72ch;
+}
+.v-grid {
+  display: grid;
+  gap: 0 32px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+.v-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.v-table th,
+.v-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 8px 12px 8px 0;
+  border-bottom: 1px solid color-mix(in oklab, currentColor 14%, transparent);
+}
+.v-table th {
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+.v-list {
+  list-style: disc;
+  padding-left: 20px;
+  font-size: 14px;
+}
+.v-page code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: color-mix(in oklab, currentColor 8%, transparent);
+}
+
+/* Design guide (markdown) */
+.v-prose {
+  max-width: 880px;
+}
+.v-prose h1 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 32px 0 12px;
+}
+.v-prose h2 {
+  font-size: 21px;
+  font-weight: 700;
+  margin: 40px 0 10px;
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in oklab, currentColor 14%, transparent);
+}
+.v-prose h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 24px 0 8px;
+}
+.v-prose p,
+.v-prose ul,
+.v-prose ol,
+.v-prose table,
+.v-prose blockquote,
+.v-prose pre {
+  margin: 10px 0;
+}
+.v-prose ul {
+  list-style: disc;
+  padding-left: 22px;
+}
+.v-prose ol {
+  list-style: decimal;
+  padding-left: 22px;
+}
+.v-prose li + li {
+  margin-top: 4px;
+}
+.v-prose blockquote {
+  padding: 4px 0 4px 16px;
+  border-left: 3px solid color-mix(in oklab, currentColor 30%, transparent);
+}
+.v-prose table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.v-prose th,
+.v-prose td {
+  text-align: left;
+  vertical-align: top;
+  padding: 6px 12px 6px 0;
+  border-bottom: 1px solid color-mix(in oklab, currentColor 14%, transparent);
+}
+.v-prose th {
+  font-weight: 600;
+}
+/* The first column is usually a short item name, so it does not wrap. When it overflows the table scrolls sideways. */
+.v-prose th:first-child,
+.v-prose td:first-child {
+  white-space: nowrap;
+}
+.v-prose pre {
+  overflow-x: auto;
+  padding: 12px;
+  border-radius: 6px;
+  background: color-mix(in oklab, currentColor 6%, transparent);
+}
+.v-prose pre code {
+  padding: 0;
+  background: none;
+}
+.v-prose a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.v-prose strong {
+  font-weight: 700;
+}
+
+/* Component catalog */
+.v-catalog td code {
+  display: inline-block;
+  margin: 0 4px 4px 0;
+}
+.v-card,
+.v-sub {
+  display: block;
+  font-size: 13px;
+  opacity: 0.72;
+}
+.v-legend {
+  display: inline-block;
+  margin-right: 16px;
+}
+/* A status is written as text and also changes shape (never told apart by color alone) */
+.v-status {
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  white-space: nowrap;
+  border: 1px solid currentColor;
+}
+.v-status[data-s="present"] {
+  font-weight: 700;
+  border-width: 2px;
+}
+.v-status[data-s="rules-only"] {
+  border-style: dashed;
+}
+/* The text is not dimmed (contrast 4.5:1). A status is told apart by its text and border style */
+.v-status[data-s="absent"] {
+  border-style: dotted;
+}
+.v-status[data-s="unused"] {
+  text-decoration: line-through;
+}

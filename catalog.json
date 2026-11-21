@@ -1,0 +1,446 @@
+{
+  "version": 1,
+  "statuses": {
+    "present": "The pack has the component (or class) and a gallery card for it",
+    "rules-only": "No component; the design guide only has rules for it",
+    "absent": "Not there yet. Build it from the design guide's rules when needed",
+    "unused": "The pack's design leaves it out on purpose (the reason is noted)"
+  },
+  "categories": [
+    {
+      "name": "Foundations",
+      "items": [
+        {
+          "id": "color-tokens",
+          "name": "Color tokens",
+          "desc": "Background, text, accent and status colors defined by name"
+        },
+        {
+          "id": "dark-theme",
+          "name": "Light and dark theme",
+          "desc": "Color values for both themes and how they switch"
+        },
+        {
+          "id": "font",
+          "name": "Font",
+          "desc": "The font shipped with the product"
+        },
+        {
+          "id": "type-scale",
+          "name": "Type sizes and weights",
+          "desc": "Size steps for headings, body and secondary text"
+        },
+        {
+          "id": "spacing",
+          "name": "Spacing and text width",
+          "desc": "Spacing steps and a readable body text width"
+        },
+        {
+          "id": "radius",
+          "name": "Radius",
+          "desc": "Corner rounding of controls, items and panels"
+        },
+        {
+          "id": "elevation",
+          "name": "Elevation (shadow)",
+          "desc": "Raised levels and their shadows"
+        },
+        {
+          "id": "motion-tokens",
+          "name": "Motion values",
+          "desc": "Durations and easing of motion, and reduced motion"
+        },
+        {
+          "id": "focus-ring",
+          "name": "Focus ring",
+          "desc": "The look of keyboard focus"
+        }
+      ]
+    },
+    {
+      "name": "Shell and navigation",
+      "items": [
+        {
+          "id": "app-shell",
+          "name": "App shell",
+          "desc": "The layout of the whole screen (navigation area and content)"
+        },
+        {
+          "id": "side-nav",
+          "name": "Navigation menu",
+          "desc": "The menu for moving between screens, with the current location marked"
+        },
+        {
+          "id": "skip-link",
+          "name": "Skip to content",
+          "desc": "The first link, for keyboard users"
+        },
+        {
+          "id": "page-title",
+          "name": "Page title",
+          "desc": "The one title per screen and its header area"
+        },
+        {
+          "id": "breadcrumb",
+          "name": "Breadcrumb",
+          "desc": "The path up to parent screens"
+        },
+        {
+          "id": "back-link",
+          "name": "Back link",
+          "desc": "A link to the screen directly above"
+        },
+        {
+          "id": "tabs",
+          "name": "Tabs",
+          "desc": "Switching between facets of the same subject within one screen"
+        },
+        {
+          "id": "pagination",
+          "name": "Pagination",
+          "desc": "Splitting a long list into pages and moving between them"
+        },
+        {
+          "id": "theme-switch",
+          "name": "Theme switch",
+          "desc": "Choosing system, light or dark"
+        },
+        {
+          "id": "account-area",
+          "name": "Account area",
+          "desc": "Sign in, sign out and the user name"
+        }
+      ]
+    },
+    {
+      "name": "Sections and data",
+      "items": [
+        {
+          "id": "panel",
+          "name": "Panel",
+          "desc": "A card that groups one section of the screen"
+        },
+        {
+          "id": "item-card",
+          "name": "Item card",
+          "desc": "One independent object in a repeated set"
+        },
+        {
+          "id": "divider",
+          "name": "Divider",
+          "desc": "Separates subsections inside a card"
+        },
+        {
+          "id": "table",
+          "name": "Table",
+          "desc": "Data in rows and columns"
+        },
+        {
+          "id": "animated-list",
+          "name": "Animated list",
+          "desc": "A list that animates as items enter and leave"
+        },
+        {
+          "id": "definition-list",
+          "name": "Definition list",
+          "desc": "Pairs of name and value"
+        },
+        {
+          "id": "disclosure",
+          "name": "Disclosure",
+          "desc": "A section that opens and closes on press"
+        },
+        {
+          "id": "kbd",
+          "name": "Keyboard shortcut",
+          "desc": "Keyboard shortcut keys shown as text"
+        },
+        {
+          "id": "length-band",
+          "name": "Length band",
+          "desc": "A horizontal band proportional to a length"
+        },
+        {
+          "id": "chart-style",
+          "name": "Chart colors and lines",
+          "desc": "Rules for chart colors, lines and grid"
+        },
+        {
+          "id": "media-image",
+          "name": "Image and enlarged view",
+          "desc": "Thumbnails and enlarging to the original"
+        },
+        {
+          "id": "avatar",
+          "name": "Avatar",
+          "desc": "A small picture that stands for a person"
+        },
+        {
+          "id": "list-row",
+          "name": "List row",
+          "desc": "One row made of an icon tile, a title with secondary text, and an action or value on the right"
+        },
+        {
+          "id": "icon-tile",
+          "name": "Icon tile",
+          "desc": "A small icon tile on a soft tinted background that tells the kind of a row"
+        },
+        {
+          "id": "checklist",
+          "name": "Checklist",
+          "desc": "A list that shows finished and remaining tasks one row each"
+        }
+      ]
+    },
+    {
+      "name": "Controls",
+      "items": [
+        {
+          "id": "button",
+          "name": "Button (primary, secondary, danger)",
+          "desc": "The one primary button per screen and the other buttons"
+        },
+        {
+          "id": "text-button",
+          "name": "Text button and link",
+          "desc": "Text-only buttons and inline links"
+        },
+        {
+          "id": "blocked-button",
+          "name": "Blocked button",
+          "desc": "The blocked look while busy or when nothing changed, and its reason"
+        },
+        {
+          "id": "icon-button",
+          "name": "Icon button",
+          "desc": "A button with only an icon"
+        },
+        {
+          "id": "text-input",
+          "name": "Text input",
+          "desc": "A single-line input and its label"
+        },
+        {
+          "id": "textarea",
+          "name": "Textarea",
+          "desc": "A multi-line input that fits its height"
+        },
+        {
+          "id": "field-error",
+          "name": "Field error text",
+          "desc": "The error description below an input"
+        },
+        {
+          "id": "counter",
+          "name": "Character count",
+          "desc": "The number of characters entered and the limit"
+        },
+        {
+          "id": "select",
+          "name": "Select",
+          "desc": "Choosing one of several values from a list"
+        },
+        {
+          "id": "choice-group",
+          "name": "Choice group",
+          "desc": "One of a few values (a group of buttons)"
+        },
+        {
+          "id": "checkbox",
+          "name": "Checkbox",
+          "desc": "Several items that turn on and off"
+        },
+        {
+          "id": "switch",
+          "name": "Switch",
+          "desc": "Turning one setting on or off right away"
+        },
+        {
+          "id": "search",
+          "name": "Search input",
+          "desc": "A query input that filters a list"
+        },
+        {
+          "id": "sort-select",
+          "name": "Sort select",
+          "desc": "Choosing the sort order of a list"
+        },
+        {
+          "id": "date-picker",
+          "name": "Date picker",
+          "desc": "Date input and calendar"
+        },
+        {
+          "id": "file-upload",
+          "name": "File upload",
+          "desc": "Choosing a file and drag and drop"
+        },
+        {
+          "id": "copy-button",
+          "name": "Copy button",
+          "desc": "Copies text to the clipboard and confirms it"
+        },
+        {
+          "id": "dropdown-menu",
+          "name": "Dropdown menu",
+          "desc": "A list of actions that opens from a button"
+        }
+      ]
+    },
+    {
+      "name": "Feedback and status",
+      "items": [
+        {
+          "id": "status-mark",
+          "name": "Status tag",
+          "desc": "A status such as done, running or failed (color and text)"
+        },
+        {
+          "id": "wait-tag",
+          "name": "Waiting tag",
+          "desc": "The number of items waiting for the user"
+        },
+        {
+          "id": "notice",
+          "name": "Notice",
+          "desc": "A notice sentence that stays on the screen"
+        },
+        {
+          "id": "toast",
+          "name": "Toast",
+          "desc": "A notice that disappears after a few seconds"
+        },
+        {
+          "id": "dialog",
+          "name": "Dialog",
+          "desc": "A window over the screen and its backdrop"
+        },
+        {
+          "id": "confirm-delete",
+          "name": "Delete confirmation",
+          "desc": "Asks once more before an action that cannot be undone"
+        },
+        {
+          "id": "tooltip",
+          "name": "Tooltip",
+          "desc": "A description that appears on hover"
+        },
+        {
+          "id": "loading-text",
+          "name": "Loading text",
+          "desc": "The state of a place where content will arrive"
+        },
+        {
+          "id": "skeleton",
+          "name": "Skeleton",
+          "desc": "Gray bars that imitate the shape of the content"
+        },
+        {
+          "id": "spinner",
+          "name": "Spinner",
+          "desc": "A progress mark that spins without end"
+        },
+        {
+          "id": "progress-bar",
+          "name": "Progress bar",
+          "desc": "The progress ratio of work whose total is known"
+        },
+        {
+          "id": "progress-ring",
+          "name": "Progress ring",
+          "desc": "Shows the finished ratio of work whose total is known as a ring and a number"
+        },
+        {
+          "id": "count-badge",
+          "name": "Count badge",
+          "desc": "The number of items to handle, placed on an icon or a menu item"
+        },
+        {
+          "id": "top-loading-bar",
+          "name": "Top loading bar",
+          "desc": "A bar that runs along the top while moving between screens"
+        },
+        {
+          "id": "progress-text",
+          "name": "Progress text",
+          "desc": "Progress wording that changes"
+        },
+        {
+          "id": "number-ticker",
+          "name": "Number ticker",
+          "desc": "Changes in progress counts and item counts"
+        },
+        {
+          "id": "job-status",
+          "name": "Job status",
+          "desc": "The state and elapsed time of long-running work"
+        },
+        {
+          "id": "empty-state",
+          "name": "Empty state",
+          "desc": "The note shown when there is no data"
+        },
+        {
+          "id": "error-retry",
+          "name": "Error and retry",
+          "desc": "A failed load and trying again"
+        },
+        {
+          "id": "confirm-flash",
+          "name": "Confirm flash",
+          "desc": "A border that briefly signals a successful action"
+        },
+        {
+          "id": "deleted-notice",
+          "name": "Deleted notice",
+          "desc": "The notice on the list screen after a delete"
+        }
+      ]
+    },
+    {
+      "name": "Interaction",
+      "items": [
+        {
+          "id": "reveal",
+          "name": "Reveal motion",
+          "desc": "The motion of cards appearing when a screen first opens"
+        },
+        {
+          "id": "slide-indicator",
+          "name": "Sliding indicator",
+          "desc": "The motion of the selected-item indicator moving across"
+        },
+        {
+          "id": "sortable",
+          "name": "Drag to reorder",
+          "desc": "Reordering with mouse or keyboard"
+        },
+        {
+          "id": "leave-guard",
+          "name": "Leave guard",
+          "desc": "Asks when leaving without saving"
+        },
+        {
+          "id": "focus-after",
+          "name": "Focus after action",
+          "desc": "Moves focus to the right place after an action"
+        },
+        {
+          "id": "polling",
+          "name": "Polling",
+          "desc": "Re-reads in-progress data every few seconds"
+        },
+        {
+          "id": "view-memory",
+          "name": "View memory",
+          "desc": "Remembers the chosen view and sort order"
+        },
+        {
+          "id": "primary-form",
+          "name": "Single primary button",
+          "desc": "When a form opens, only its submit button is primary and the others become secondary"
+        }
+      ]
+    }
+  ]
+}
