@@ -1,6 +1,6 @@
 ---
 name: ui-pack
-description: Use when applying a saved UI design system pack (tokens, fonts, components, motion, interactions, guide) to another project, or listing and viewing the available packs. Not for making or syncing packs - that is the ui-pack-create skill. Triggers - "apply a UI pack", "apply the design system", "list packs", "view pack", "UI 팩 적용", "디자인 시스템 적용", "inkpaper 적용", "팩 목록", "팩 보기", "/ui-pack".
+description: Use when applying a saved UI design system pack (tokens, fonts, components, motion, interactions, guide) to another project, or listing and viewing the available packs. Not for making or syncing packs - that is the ui-pack-create skill. Triggers - "apply a UI pack", "apply the design system", "list packs", "view pack", "/ui-pack".
 ---
 
 # ui-pack
