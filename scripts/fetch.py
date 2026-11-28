@@ -10,6 +10,7 @@ A fetched pack is someone else's code, so before it is moved into the pack store
   - no symlinks in the repository
   - every "from" of the install list stays inside the pack and every "to" stays inside the target project
 Prints the npm packages the pack will install, for the user to review before applying.
+When the pack store is a git repository, the fetched pack is committed (and pushed when the store has a remote).
 Exit code 3: refused (the checks above); nothing is left in the pack store.
 """
 import argparse, json, os, pathlib, re, shutil, subprocess, sys, tempfile
@@ -67,7 +68,27 @@ with tempfile.TemporaryDirectory(dir=packs, prefix=".fetch-") as tmp:
     dest = packs / meta["name"]
     if dest.exists():
         refuse(f"a pack named {meta['name']} already exists: {dest} (remove or rename it first)")
+    shutil.rmtree(clone / ".git")  # a plain copy: a nested repository would be stored as a bare link in a git pack store
     shutil.move(str(clone), dest)
+
+
+def commit(home: pathlib.Path, name: str, msg: str) -> None:
+    """Commit packs/<name> when the pack store is a git repository; push when it has a remote. Failures only warn."""
+    if not (home / ".git").exists():
+        return
+    git = ["git", "-C", str(home)]
+    for cmd in (["add", "--", f"packs/{name}"], ["commit", "-q", "-m", msg, "--", f"packs/{name}"]):
+        r = subprocess.run(git + cmd, capture_output=True, text=True)
+        if r.returncode != 0:
+            print(f"Warning: the pack store was not committed: {(r.stderr or r.stdout).strip()}", file=sys.stderr)
+            return
+    if subprocess.run(git + ["remote"], capture_output=True, text=True).stdout.strip():
+        r = subprocess.run(git + ["push", "-q"], capture_output=True, text=True, timeout=120)
+        if r.returncode != 0:
+            print(f"Warning: the pack store was committed but not pushed: {r.stderr.strip()}", file=sys.stderr)
+
+
+commit(packs.parent, meta["name"], f"feat: fetch pack {meta['name']} from {url}")
 
 deps = {**meta.get("dependencies", {}), **meta.get("devDependencies", {})}
 print(f"Fetched {meta['name']} {meta.get('version', '')} into {dest}")
