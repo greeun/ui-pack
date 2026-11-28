@@ -52,7 +52,7 @@ Packs are published as public git repositories (`https://github.com/<owner>/ui-p
    ```bash
    python3 ~/.claude/skills/ui-pack/scripts/fetch.py <repository URL>
    ```
-   The script refuses (exit code 3) a repository without a valid `pack.json`, with symlinks, with an install list that reads outside the pack or writes outside the target, or a pack name that already exists in the pack store. Do not work around a refusal; report it. When the name already exists, ask the user whether the existing pack is the same one (then use it) or which to keep.
+   The script refuses (exit code 3) a repository without a valid `pack.json`, with symlinks, with an install list that reads outside the pack or writes outside the target, or a pack name that already exists in the pack store. When the pack store is a git repository, the script commits the fetched pack (and pushes it when the store has a remote). Do not work around a refusal; report it. When the name already exists, ask the user whether the existing pack is the same one (then use it) or which to keep.
 3. A fetched pack is someone else's code. Before installing it, show the user the npm packages the script printed and the pack's `requires`, and go on only after the user agrees.
 4. The fetched pack has no pack viewer (`view/index.html` is not published). Build it with `build-view.py` only when the user wants to see the pack first.
 

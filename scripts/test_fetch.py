@@ -32,6 +32,7 @@ good = {"name": "calmgrid", "version": "1.0.0", "requires": {}, "dependencies": 
 r = fetch(repo("ok", good))
 assert r.returncode == 0, r.stderr
 assert (home / "packs" / "calmgrid" / "pack.json").is_file()
+assert not (home / "packs" / "calmgrid" / ".git").exists()
 assert "clsx@^2" in r.stdout, r.stdout  # the npm packages are shown for review
 assert not [p for p in (home / "packs").iterdir() if p.name.startswith(".fetch-")]  # no temporary folder left
 
@@ -47,6 +48,15 @@ for key, (meta, link, msg) in cases.items():
     assert r.returncode == 3 and msg in r.stderr, (key, r.returncode, r.stderr)
     assert not (home / "packs" / meta["name"]).exists() or key == "exists", key
 assert sorted(p.name for p in (home / "packs").iterdir()) == ["calmgrid"]
+
+# A pack store that is a git repository gets a commit for the fetched pack
+subprocess.run(GIT + ["init", "-q", str(home)], check=True)
+for cmd in (["config", "user.name", "t"], ["config", "user.email", "t@example.com"]):
+    subprocess.run(["git", "-C", str(home)] + cmd, check=True)
+r = fetch(repo("tracked", {**good, "name": "tracked"}))
+assert r.returncode == 0, r.stderr
+log = subprocess.run(["git", "-C", str(home), "log", "--format=%s", "--name-only"], capture_output=True, text=True).stdout
+assert "feat: fetch pack tracked" in log and "packs/tracked/pack.json" in log and "calmgrid" not in log, log
 
 # install.py refuses a pack file outside the pack even when the pack was not fetched with fetch.py
 bad = home / "packs" / "local-bad"
