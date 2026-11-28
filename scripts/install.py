@@ -107,6 +107,9 @@ def content_for(src: pathlib.Path, rel_pack: str) -> bytes:
 
 
 def place(src: pathlib.Path, dst: pathlib.Path, mode: str):
+    # A pack fetched from someone else is untrusted: "../" in pack.json or a symlink must not copy files from outside it.
+    if not src.resolve().is_relative_to(pack):
+        sys.exit(f"Refusing a pack file outside the pack folder: {src}")
     rel_pack = str(src.relative_to(pack))
     rel_dst = str(dst.relative_to(target))
     if rel_pack in excluded:
