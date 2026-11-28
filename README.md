@@ -49,6 +49,7 @@ The scripts were written and used on macOS.
 | `catalog.json` | The component catalog: 81 components a UI pack is expected to cover. Each pack records a status per component (`present`, `rules-only`, `absent`, `unused`) |
 | `viewer/` | The Next.js template the pack viewer is built from |
 | `scripts/install.py` | Copies a pack's files into a target project, installs its dependencies and writes `ui-pack.lock.json`. Run it again safely: files edited after the install are left alone |
+| `scripts/fetch.py` | Fetches a published pack (`github.com/<owner>/ui-pack-<pack>`) into the pack store. Refuses a repository with symlinks or an install list that reads outside the pack or writes outside the target, and prints the npm packages the pack installs |
 | `scripts/build-view.py` | Builds `<pack>/view/index.html` (the pack viewer), its preview images and the pack index |
 | `scripts/compare.py` | Captures screens before and after applying, builds a side-by-side comparison page and reports app contract items that were `removed` or `added` |
 | `scripts/gallery-check.mjs` | Compares the target's `/design` gallery with the pack's gallery by computed style, to catch the target's global CSS leaking into pack components |

@@ -1,6 +1,6 @@
 ---
 name: ui-pack
-description: Use when applying a saved UI design system pack (tokens, fonts, components, motion, interactions, guide) to another project, or listing and viewing the available packs. Not for making or syncing packs - that is the ui-pack-create skill. Triggers - "apply a UI pack", "apply the design system", "list packs", "view pack", "/ui-pack".
+description: Use when applying a saved UI design system pack (tokens, fonts, components, motion, interactions, guide) to another project, or listing and viewing the available packs. Not for making or syncing packs - that is the ui-pack-create skill. Also fetches a published pack from its GitHub repository or Galpi entry. Triggers - "apply a UI pack", "apply the design system", "apply this pack from GitHub", "apply this pack from Galpi", "list packs", "view pack", "/ui-pack".
 ---
 
 # ui-pack
@@ -38,9 +38,23 @@ A UI pack is a folder that holds one project's screen design: color, type and sp
 | "list packs", `/ui-pack list` | Show a table of name, version, description, requires and the pack viewer path from `$UI_PACK_HOME/packs/*/pack.json`. When asked about components, show a component × pack table from `catalog.json` and each pack's `components` |
 | "view pack", `/ui-pack view [pack]` | `open $UI_PACK_HOME/packs/<pack>/view/index.html` (`$UI_PACK_HOME/packs/index.html` when no pack is named). When the pack viewer is missing or the pack was edited since, build it first with `python3 ~/.claude/skills/ui-pack/scripts/build-view.py $UI_PACK_HOME/packs/<pack>` |
 | "apply pack", `/ui-pack apply <pack>` | "Apply" below |
+| "fetch pack", `/ui-pack fetch <URL>`, or `/ui-pack apply <URL>` (a GitHub repository or a Galpi entry of a published pack) | "Fetching a published pack" below, then "Apply" with the fetched pack when the request was to apply it |
 | "make a pack", "make a pack from this site, link or screenshot", "sync the pack" | Not this skill's job. Use the `ui-pack-create` skill (extracting from source code, making a pack from a URL, SNS post, screenshot or video, syncing with the source) |
 
 This skill does not edit pack files. A request to change the pack's values while applying it is handled first with "Editing a pack" of the `ui-pack-create` skill, and the pack is applied after that. To apply a pack that is not merged yet, give the pack folder of that worktree where the commands below take the pack path.
+
+## Fetching a published pack
+
+Packs are published as public git repositories (`https://github.com/<owner>/ui-pack-<pack>`, with a Galpi entry that links to the repository).
+
+1. Find the repository address. A GitHub address is used as given. For a Galpi entry, read the entry page and take its repository link (the `github.com/.../ui-pack-...` address in the entry); if there is none, tell the user and stop.
+2. Fetch it into the pack store:
+   ```bash
+   python3 ~/.claude/skills/ui-pack/scripts/fetch.py <repository URL>
+   ```
+   The script refuses (exit code 3) a repository without a valid `pack.json`, with symlinks, with an install list that reads outside the pack or writes outside the target, or a pack name that already exists in the pack store. When the pack store is a git repository, the script commits the fetched pack (and pushes it when the store has a remote). Do not work around a refusal; report it. When the name already exists, ask the user whether the existing pack is the same one (then use it) or which to keep.
+3. A fetched pack is someone else's code. Before installing it, show the user the npm packages the script printed and the pack's `requires`, and go on only after the user agrees.
+4. The fetched pack has no pack viewer (`view/index.html` is not published). Build it with `build-view.py` only when the user wants to see the pack first.
 
 ## Apply
 
